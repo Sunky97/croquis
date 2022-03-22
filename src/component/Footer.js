@@ -4,7 +4,7 @@ const FooterWrap = styled.footer`
   margin-top: 50px;
   color: #9d9d9d;
   height: 150px;
-  font-size: 15px;
+  font-size: 14px;
   @media screen and (min-width: 1024px) {
     padding-left: 15%;
     width: 1024px;

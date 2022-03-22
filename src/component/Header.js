@@ -2,27 +2,30 @@ import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import LogoImg from "../assets/logo-black.svg";
 const HeaderWrap = styled.header`
-  position: absolute;
-  top: 0;
   width: 100%;
-  height: 250px;
+  height: 100px;
   background: white;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 55px 0 25px;
+  box-sizing: border-box;
+  align-items: center;
 `;
 
 const Logo = styled.div`
-  width: 150px;
-  height: 150px;
+  width: 75px;
+  height: 75px;
   background: url(${LogoImg}) no-repeat center/cover;
-  margin: 15px auto 30px auto;
 `;
 
 const Navigation = styled.nav`
-  text-align: center;
   li {
+    line-height: initial;
     display: inline-block;
-    width: 65px;
     height: 32px;
-
+    margin-left: 50px;
     a {
       text-decoration: none;
       color: #c9c9c9;
@@ -44,11 +47,13 @@ const Navigation = styled.nav`
 const Header = () => {
   const currLocation = useLocation();
   const currTab = (path) => {
-    return currLocation.pathname === path ? "on" : "";
+    return currLocation.pathname.includes(path) ? "on" : "";
   };
   return (
     <HeaderWrap>
-      <Logo />
+      <Link to="/croquis">
+        <Logo />
+      </Link>
       <Navigation>
         <ul>
           <li>
@@ -57,13 +62,13 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/aa" className={currTab("/aa")}>
-              소개
+            <Link to="/sketch" className={currTab("/sketch")}>
+              크로키
             </Link>
           </li>
           <li>
-            <Link to="/bb" className={currTab("/bb")}>
-              문의
+            <Link to="/support" className={currTab("/support")}>
+              도움되는 사이트
             </Link>
           </li>
         </ul>
