@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/croquis/static/css/main.073c9b0a.css",
-    "main.js": "/croquis/static/js/main.f632c70c.js",
+    "main.css": "/croquis/static/css/main.c6958385.css",
+    "main.js": "/croquis/static/js/main.a8215953.js",
     "static/js/787.170890d0.chunk.js": "/croquis/static/js/787.170890d0.chunk.js",
-    "static/media/logo.svg": "/croquis/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/bg.jpg": "/croquis/static/media/bg.257357b87da826299271.jpg",
+    "static/media/logo-black.svg": "/croquis/static/media/logo-black.ca7871ec619a17aea673a65ddd80af77.svg",
+    "static/media/Logo.png": "/croquis/static/media/Logo.dcd1dc65295a817e7ae7.png",
     "index.html": "/croquis/index.html",
-    "main.073c9b0a.css.map": "/croquis/static/css/main.073c9b0a.css.map",
-    "main.f632c70c.js.map": "/croquis/static/js/main.f632c70c.js.map",
+    "main.c6958385.css.map": "/croquis/static/css/main.c6958385.css.map",
+    "main.a8215953.js.map": "/croquis/static/js/main.a8215953.js.map",
     "787.170890d0.chunk.js.map": "/croquis/static/js/787.170890d0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.f632c70c.js"
+    "static/css/main.c6958385.css",
+    "static/js/main.a8215953.js"
   ]
 }
