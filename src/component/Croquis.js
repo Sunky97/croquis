@@ -4,23 +4,28 @@ import Timer from "./Timer";
 
 const CroquisWrap = styled.div`
   width: 100%;
-  height: 1000px;
+  height: 800px;
   display: flex;
 `;
 
 const ImageWrap = styled.div`
   width: 70%;
   height: 100%;
+  background-color: black;
 `;
 
 const Image = styled.div`
-  height: 100%;
   padding: 30px;
-  text-align: center;
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   img {
     max-height: 100%;
-    object-fit: cover;
+    max-width: 100%;
   }
 `;
 
