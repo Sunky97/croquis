@@ -120,7 +120,7 @@ const Croquis = () => {
   };
 
   const handleDelayChange = (e) => {
-    setDelay(() => e.target.value);
+    setDelay(e.target.value);
   };
 
   const handleCategoryChange = (e) => {
@@ -147,8 +147,8 @@ const Croquis = () => {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={delay}
               label="delay"
+              defaultValue={30}
               onChange={handleDelayChange}
             >
               <MenuItem value={15}>15초</MenuItem>

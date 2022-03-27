@@ -122,7 +122,7 @@ const Timer = ({ delay, nextImage, prevImage }) => {
   }, [delay]);
 
   useEffect(() => {
-    if (second === 0) {
+    if (minute === 0 && second === 0) {
       clearInterval(timerInterval);
       nextImage();
       reset();
