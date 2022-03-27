@@ -76,7 +76,7 @@ const ResetButton = styled.button`
   bottom: 15px;
 `;
 
-const Timer = ({ delay }) => {
+const Timer = ({ delay, nextImage }) => {
   const [isPlay, setIsPlay] = useState(false);
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
@@ -124,6 +124,8 @@ const Timer = ({ delay }) => {
   useEffect(() => {
     if (second === 0) {
       clearInterval(timerInterval);
+      nextImage();
+      reset();
     }
   }, [minute, second]);
 
@@ -149,7 +151,8 @@ const Timer = ({ delay }) => {
   };
 
   const handleNextClick = () => {
-    console.log(minute, second);
+    nextImage();
+    reset();
   };
 
   const handleBtnMouseOver = (e) => {

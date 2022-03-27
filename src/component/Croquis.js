@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Timer from "./Timer";
 import InputLabel from "@mui/material/InputLabel";
@@ -10,6 +10,9 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import ListItemText from "@mui/material/ListItemText";
+import axios from "axios";
+import getImage from "../utills/getImage";
+
 const CroquisWrap = styled.div`
   width: 100%;
   height: 800px;
@@ -57,6 +60,7 @@ const SelectWrap = styled.div`
 `;
 
 const categorys = [
+  { text: "전체", value: "" },
   { text: "3D", value: "3d-renders" },
   { text: "질감, 패턴", value: "textures-patterns" },
   { text: "실험적인", value: "experimental" },
@@ -98,14 +102,23 @@ const Croquis = () => {
   const [delay, setDelay] = useState(30);
   const [category, setCategory] = useState([]);
 
+  const nextImage = async () => {
+    const img = await getImage();
+    setCurrentImage(`data:image/png;base64,${img}`);
+  };
+
   const handleDelayChange = (e) => {
     setDelay(() => e.target.value);
   };
 
   const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
-    // console.log(category);
+    setPreviousImage(() => currentImage);
+    setCategory(() => e.target.value);
   };
+
+  useEffect(() => {
+    setCurrentImage(() => `${baseURL}/?${category}`);
+  }, [category]);
 
   return (
     <CroquisWrap>
@@ -115,7 +128,7 @@ const Croquis = () => {
         </Image>
       </ImageWrap>
       <TimerWrap>
-        <Timer delay={delay} />
+        <Timer delay={delay} nextImage={nextImage} />
         <SelectWrap>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">타이머</InputLabel>
@@ -144,10 +157,10 @@ const Croquis = () => {
             <Select
               labelId="demo-multiple-name-label"
               id="demo-multiple-name"
-              value={category}
               onChange={handleCategoryChange}
               input={<OutlinedInput label="Name" />}
               MenuProps={MenuProps}
+              value={category}
             >
               {categorys.map((e) => (
                 <MenuItem key={e.text} value={e.value}>
@@ -157,6 +170,16 @@ const Croquis = () => {
             </Select>
           </FormControl>
         </SelectWrap>
+        {/* <button
+          onClick={() => {
+            alert(
+              "이전이미지값" + previousImage + ",현재 이미지값" + currentImage
+            );
+          }}
+        >
+          확인용
+        </button> */}
+        <button onClick={nextImage}>다음</button>
       </TimerWrap>
     </CroquisWrap>
   );
