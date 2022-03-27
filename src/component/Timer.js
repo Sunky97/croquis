@@ -76,7 +76,7 @@ const ResetButton = styled.button`
   bottom: 15px;
 `;
 
-const Timer = ({ delay, nextImage }) => {
+const Timer = ({ delay, nextImage, prevImage }) => {
   const [isPlay, setIsPlay] = useState(false);
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
@@ -139,7 +139,10 @@ const Timer = ({ delay, nextImage }) => {
     reset();
   };
 
-  const handlePrevClick = () => {};
+  const handlePrevClick = () => {
+    prevImage();
+    reset();
+  };
 
   const handlePauseClick = () => {
     setIsPlay(false);
@@ -181,6 +184,7 @@ const Timer = ({ delay, nextImage }) => {
         <ControlBox>
           <li>
             <button
+              onClick={handlePrevClick}
               onMouseOver={handleBtnMouseOver}
               onMouseOut={handleBtnMouseOut}
             >

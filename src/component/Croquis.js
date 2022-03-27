@@ -95,15 +95,27 @@ const MenuProps = {
 };
 
 const Croquis = () => {
-  const baseURL = "https://source.unsplash.com/random";
-
-  const [previousImage, setPreviousImage] = useState("");
-  const [currentImage, setCurrentImage] = useState(baseURL);
+  const previousImage = useRef([]);
+  const [currentImage, setCurrentImage] = useState("");
   const [delay, setDelay] = useState(30);
   const [category, setCategory] = useState([]);
 
+  useEffect(() => {
+    const firstImage = getImage();
+    setCurrentImage(firstImage);
+  }, []);
+
+  const prevImage = () => {
+    if (previousImage.current.length === 1) {
+      alert("이전 이미지가 없습니다.");
+      return;
+    }
+    setCurrentImage(previousImage.current.pop());
+  };
   const nextImage = async () => {
-    const img = await getImage();
+    const img = await getImage(category);
+
+    previousImage.current.push(currentImage);
     setCurrentImage(`data:image/png;base64,${img}`);
   };
 
@@ -112,13 +124,8 @@ const Croquis = () => {
   };
 
   const handleCategoryChange = (e) => {
-    setPreviousImage(() => currentImage);
     setCategory(() => e.target.value);
   };
-
-  useEffect(() => {
-    setCurrentImage(() => `${baseURL}/?${category}`);
-  }, [category]);
 
   return (
     <CroquisWrap>
@@ -128,7 +135,12 @@ const Croquis = () => {
         </Image>
       </ImageWrap>
       <TimerWrap>
-        <Timer delay={delay} nextImage={nextImage} />
+        <Timer
+          delay={delay}
+          nextImage={nextImage}
+          previousImage={previousImage}
+          prevImage={prevImage}
+        />
         <SelectWrap>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">타이머</InputLabel>
@@ -170,16 +182,6 @@ const Croquis = () => {
             </Select>
           </FormControl>
         </SelectWrap>
-        {/* <button
-          onClick={() => {
-            alert(
-              "이전이미지값" + previousImage + ",현재 이미지값" + currentImage
-            );
-          }}
-        >
-          확인용
-        </button> */}
-        <button onClick={nextImage}>다음</button>
       </TimerWrap>
     </CroquisWrap>
   );
