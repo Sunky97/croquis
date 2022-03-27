@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import LogoImg from "../assets/logo-black.svg";
+import Title from "../assets/title.svg";
 const HeaderWrap = styled.header`
   width: 100%;
   height: 100px;
@@ -9,16 +10,28 @@ const HeaderWrap = styled.header`
   display: flex;
   justify-content: space-between;
 
-  padding: 0 55px 0 25px;
+  padding: 0 55px 0 55px;
   box-sizing: border-box;
   align-items: center;
   box-shadow: 0 0.15rem 1.75rem #21283226 !important;
+`;
+
+const LogoWrap = styled.div`
+  display: flex;
+  width: 300px;
+  height: 75px;
 `;
 
 const Logo = styled.div`
   width: 75px;
   height: 75px;
   background: url(${LogoImg}) no-repeat center/cover;
+`;
+
+const TitleImage = styled.div`
+  width: 125px;
+  height: 75px;
+  background: url(${Title}) no-repeat center/cover;
 `;
 
 const Navigation = styled.nav`
@@ -53,7 +66,10 @@ const Header = () => {
   return (
     <HeaderWrap>
       <Link to="/croquis">
-        <Logo />
+        <LogoWrap>
+          <Logo />
+          <TitleImage />
+        </LogoWrap>
       </Link>
       <Navigation>
         <ul>
