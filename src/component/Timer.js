@@ -34,7 +34,7 @@ const TimerBox = styled.div`
   background-color: ${(props) =>
     props.imminent ? "rgb(234 112 98)" : "rgb(16 139 245)"};
   text-align: center;
-  height: 150px;
+  height: 100px;
   box-sizing: border-box;
   padding: 20px 33% 20px 33%;
 
@@ -43,7 +43,7 @@ const TimerBox = styled.div`
   align-items: center;
 
   div {
-    font-size: 50px;
+    font-size: 40px;
     color: white;
   }
 `;
@@ -51,7 +51,7 @@ const TimerBox = styled.div`
 const Controls = styled.div`
   background-color: ${(props) =>
     props.imminent ? "rgb(234 112 98)" : "rgb(16 139 245)"};
-  height: 75px;
+  height: 50px;
 `;
 
 const ControlBox = styled.ul`
@@ -76,7 +76,7 @@ const ResetButton = styled.button`
   bottom: 15px;
 `;
 
-const Timer = ({ delay }) => {
+const Timer = ({ delay, nextImage, prevImage }) => {
   const [isPlay, setIsPlay] = useState(false);
   const [minute, setMinute] = useState(0);
   const [second, setSecond] = useState(0);
@@ -122,8 +122,10 @@ const Timer = ({ delay }) => {
   }, [delay]);
 
   useEffect(() => {
-    if (second === 0) {
+    if (minute === 0 && second === 0) {
       clearInterval(timerInterval);
+      nextImage();
+      reset();
     }
   }, [minute, second]);
 
@@ -137,7 +139,10 @@ const Timer = ({ delay }) => {
     reset();
   };
 
-  const handlePrevClick = () => {};
+  const handlePrevClick = () => {
+    prevImage();
+    reset();
+  };
 
   const handlePauseClick = () => {
     setIsPlay(false);
@@ -149,7 +154,8 @@ const Timer = ({ delay }) => {
   };
 
   const handleNextClick = () => {
-    console.log(minute, second);
+    nextImage();
+    reset();
   };
 
   const handleBtnMouseOver = (e) => {
@@ -178,10 +184,11 @@ const Timer = ({ delay }) => {
         <ControlBox>
           <li>
             <button
+              onClick={handlePrevClick}
               onMouseOver={handleBtnMouseOver}
               onMouseOut={handleBtnMouseOut}
             >
-              <FaBackward size={30} color="rgb(255 255 255 / 75%)" />
+              <FaBackward size={20} color="rgb(255 255 255 / 75%)" />
             </button>
           </li>
           <li className="on">
@@ -191,7 +198,7 @@ const Timer = ({ delay }) => {
                 onMouseOver={handleBtnMouseOver}
                 onMouseOut={handleBtnMouseOut}
               >
-                <FaPlay size={30} color="rgb(255 255 255 / 75%)" />
+                <FaPlay size={20} color="rgb(255 255 255 / 75%)" />
               </button>
             ) : (
               <button
@@ -199,7 +206,7 @@ const Timer = ({ delay }) => {
                 onMouseOver={handleBtnMouseOver}
                 onMouseOut={handleBtnMouseOut}
               >
-                <FaPause size={30} color="rgb(255 255 255 / 75%)" />
+                <FaPause size={20} color="rgb(255 255 255 / 75%)" />
               </button>
             )}
           </li>
@@ -209,7 +216,7 @@ const Timer = ({ delay }) => {
               onMouseOver={handleBtnMouseOver}
               onMouseOut={handleBtnMouseOut}
             >
-              <FaForward size={30} color="rgb(255 255 255 / 75%)" />
+              <FaForward size={20} color="rgb(255 255 255 / 75%)" />
             </button>
           </li>
         </ControlBox>

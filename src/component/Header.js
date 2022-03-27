@@ -12,6 +12,7 @@ const HeaderWrap = styled.header`
   padding: 0 55px 0 25px;
   box-sizing: border-box;
   align-items: center;
+  box-shadow: 0 0.15rem 1.75rem #21283226 !important;
 `;
 
 const Logo = styled.div`
