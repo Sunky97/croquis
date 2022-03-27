@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import LogoImg from "../assets/logo-black.svg";
-import Title from "../assets/title.svg";
+import LogoImg2 from "../assets/title.svg";
 const HeaderWrap = styled.header`
   width: 100%;
   height: 100px;
@@ -31,7 +31,7 @@ const Logo = styled.div`
 const TitleImage = styled.div`
   width: 125px;
   height: 75px;
-  background: url(${Title}) no-repeat center/cover;
+  background: url(${LogoImg2}) no-repeat center/cover;
 `;
 
 const Navigation = styled.nav`

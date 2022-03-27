@@ -15,21 +15,44 @@ import getImage from "../utills/getImage";
 
 const CroquisWrap = styled.div`
   width: 100%;
-  height: 800px;
-  display: flex;
   border-top: 1px solid #e5e6e9;
   border-bottom: 1px solid #e5e6e9;
 
   background-color: #f2f6fc;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    height: 800px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    display: inline-block;
+    height: 900px;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: inline-block;
+  }
 `;
 
 const ImageWrap = styled.div`
   width: 100%;
   height: 100%;
+
+  // @media screen and (min-width: 1024px) {
+  //   height: 550px;
+  // }
+
+  // @media screen and (min-width: 768px) and (max-width: 1023px) {
+  //   height: 550px;
+  // }
+
+  // @media screen and (max-width: 767px) {
+  //   height: 550px;
+  // }
 `;
 
 const Image = styled.div`
-  padding: 30px;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -42,13 +65,34 @@ const Image = styled.div`
     max-width: 100%;
     box-shadow: 0 0 1.75rem #0000004d;
   }
+
+  @media screen and (min-width: 1024px) {
+    padding: 30px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding: 0;
+  }
 `;
 
 const TimerWrap = styled.div`
-  width: 15rem;
-  height: 100%;
-  background: #fff;
-  box-shadow: 0.15rem 0 1.75rem #21283226 !important;
+background: #fff;
+box-shadow: 0.15rem 0 1.75rem #21283226 !important;
+
+@media screen and (min-width: 1024px) {
+    width: 15rem;
+    height: 100%;
+
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100%
+    height: 300px;
+  }
+
+  // @media screen and (max-width: 767px) {
+  //   height: 550px;
+  // }
 `;
 
 const SelectWrap = styled.div`
