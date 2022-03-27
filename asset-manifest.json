@@ -1,18 +1,19 @@
 {
   "files": {
     "main.css": "/croquis/static/css/main.22422080.css",
-    "main.js": "/croquis/static/js/main.6baef1ba.js",
+    "main.js": "/croquis/static/js/main.91e7cc25.js",
     "static/js/787.170890d0.chunk.js": "/croquis/static/js/787.170890d0.chunk.js",
     "static/media/bg.jpg": "/croquis/static/media/bg.257357b87da826299271.jpg",
     "static/media/logo-black.svg": "/croquis/static/media/logo-black.ca7871ec619a17aea673a65ddd80af77.svg",
+    "static/media/title.svg": "/croquis/static/media/title.727dc7b4a0264c6c8a0ca9fe652ab0ac.svg",
     "static/media/Logo.png": "/croquis/static/media/Logo.dcd1dc65295a817e7ae7.png",
     "index.html": "/croquis/index.html",
     "main.22422080.css.map": "/croquis/static/css/main.22422080.css.map",
-    "main.6baef1ba.js.map": "/croquis/static/js/main.6baef1ba.js.map",
+    "main.91e7cc25.js.map": "/croquis/static/js/main.91e7cc25.js.map",
     "787.170890d0.chunk.js.map": "/croquis/static/js/787.170890d0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.22422080.css",
-    "static/js/main.6baef1ba.js"
+    "static/js/main.91e7cc25.js"
   ]
 }
