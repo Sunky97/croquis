@@ -9,30 +9,20 @@ import {
   FaForward,
 } from "react-icons/fa";
 
-// function useInterval(callback, delay) {
-//   const savedCallback = useRef(); // 최근에 들어온 callback을 저장할 ref를 하나 만든다.
+const TimerWrap = styled.div`
+  width: 100%;
+  height: 150px;
+  background-color: ${(props) =>
+    props.imminent ? "rgb(234 112 98)" : "rgb(16 139 245)"};
 
-//   useEffect(() => {
-//     savedCallback.current = callback; // callback이 바뀔 때마다 ref를 업데이트 해준다.
-//   }, [callback]);
-
-//   useEffect(() => {
-//     function tick() {
-//       savedCallback.current(); // tick이 실행되면 callback 함수를 실행시킨다.
-//     }
-//     if (delay !== null) {
-//       // 만약 delay가 null이 아니라면
-//       let id = setInterval(tick, delay); // delay에 맞추어 interval을 새로 실행시킨다.
-//       return () => clearInterval(id); // unmount될 때 clearInterval을 해준다.
-//     }
-//   }, [delay]); // delay가 바뀔 때마다 새로 실행된다.
-// }
+  button {
+    cursor: pointer;
+  }
+`;
 
 const TimerBox = styled.div`
   position: relative;
   width: 100%;
-  background-color: ${(props) =>
-    props.imminent ? "rgb(234 112 98)" : "rgb(16 139 245)"};
   text-align: center;
   height: 100px;
   box-sizing: border-box;
@@ -46,12 +36,6 @@ const TimerBox = styled.div`
     font-size: 40px;
     color: white;
   }
-`;
-
-const Controls = styled.div`
-  background-color: ${(props) =>
-    props.imminent ? "rgb(234 112 98)" : "rgb(16 139 245)"};
-  height: 50px;
 `;
 
 const ControlBox = styled.ul`
@@ -167,8 +151,8 @@ const Timer = ({ delay, nextImage, prevImage }) => {
     e.target.setAttribute("color", "rgb(255 255 255 / 75%)");
   };
   return (
-    <>
-      <TimerBox imminent={isImminent()}>
+    <TimerWrap imminent={isImminent()}>
+      <TimerBox>
         <div>{minute < 10 ? `0${minute}` : minute}</div>
         <div>:</div>
         <div>{second < 10 ? `0${second}` : second}</div>
@@ -180,48 +164,46 @@ const Timer = ({ delay, nextImage, prevImage }) => {
           <FaUndoAlt size={20} color="rgb(255 255 255 / 75%)" />
         </ResetButton>
       </TimerBox>
-      <Controls imminent={isImminent()}>
-        <ControlBox>
-          <li>
+      <ControlBox>
+        <li>
+          <button
+            onClick={handlePrevClick}
+            onMouseOver={handleBtnMouseOver}
+            onMouseOut={handleBtnMouseOut}
+          >
+            <FaBackward size={20} color="rgb(255 255 255 / 75%)" />
+          </button>
+        </li>
+        <li className="on">
+          {!isPlay ? (
             <button
-              onClick={handlePrevClick}
+              onClick={handlePlayClick}
               onMouseOver={handleBtnMouseOver}
               onMouseOut={handleBtnMouseOut}
             >
-              <FaBackward size={20} color="rgb(255 255 255 / 75%)" />
+              <FaPlay size={20} color="rgb(255 255 255 / 75%)" />
             </button>
-          </li>
-          <li className="on">
-            {!isPlay ? (
-              <button
-                onClick={handlePlayClick}
-                onMouseOver={handleBtnMouseOver}
-                onMouseOut={handleBtnMouseOut}
-              >
-                <FaPlay size={20} color="rgb(255 255 255 / 75%)" />
-              </button>
-            ) : (
-              <button
-                onClick={handlePauseClick}
-                onMouseOver={handleBtnMouseOver}
-                onMouseOut={handleBtnMouseOut}
-              >
-                <FaPause size={20} color="rgb(255 255 255 / 75%)" />
-              </button>
-            )}
-          </li>
-          <li>
+          ) : (
             <button
-              onClick={handleNextClick}
+              onClick={handlePauseClick}
               onMouseOver={handleBtnMouseOver}
               onMouseOut={handleBtnMouseOut}
             >
-              <FaForward size={20} color="rgb(255 255 255 / 75%)" />
+              <FaPause size={20} color="rgb(255 255 255 / 75%)" />
             </button>
-          </li>
-        </ControlBox>
-      </Controls>
-    </>
+          )}
+        </li>
+        <li>
+          <button
+            onClick={handleNextClick}
+            onMouseOver={handleBtnMouseOver}
+            onMouseOut={handleBtnMouseOut}
+          >
+            <FaForward size={20} color="rgb(255 255 255 / 75%)" />
+          </button>
+        </li>
+      </ControlBox>
+    </TimerWrap>
   );
 };
 

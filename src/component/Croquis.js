@@ -5,50 +5,93 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Box from "@mui/material/Box";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import ListItemText from "@mui/material/ListItemText";
-import axios from "axios";
 import getImage from "../utills/getImage";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/system";
 
 const CroquisWrap = styled.div`
   width: 100%;
-  height: 800px;
-  display: flex;
   border-top: 1px solid #e5e6e9;
   border-bottom: 1px solid #e5e6e9;
 
   background-color: #f2f6fc;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    height: 800px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    display: inline-block;
+    height: 900px;
+  }
+
+  @media screen and (max-width: 767px) {
+    display: inline-block;
+  }
 `;
 
 const ImageWrap = styled.div`
   width: 100%;
   height: 100%;
+
+  // @media screen and (min-width: 1024px) {
+  //   height: 550px;
+  // }
+
+  // @media screen and (min-width: 768px) and (max-width: 1023px) {
+  //   height: 550px;
+  // }
+
+  // @media screen and (max-width: 767px) {
+  //   height: 550px;
+  // }
 `;
 
 const Image = styled.div`
-  padding: 30px;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
   img {
     max-height: 100%;
     max-width: 100%;
-    box-shadow: 0 0 1.75rem #0000004d;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 30px;
+
+    img {
+      box-shadow: 0 0 1.75rem #0000004d;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding: 0;
   }
 `;
 
 const TimerWrap = styled.div`
-  width: 15rem;
-  height: 100%;
-  background: #fff;
-  box-shadow: 0.15rem 0 1.75rem #21283226 !important;
+background: #fff;
+box-shadow: 0.15rem 0 1.75rem #21283226 !important;
+
+@media screen and (min-width: 1024px) {
+    width: 15rem;
+    height: 100%;
+
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 100%
+    height: 300px;
+  }
+
+  // @media screen and (max-width: 767px) {
+  //   height: 550px;
+  // }
 `;
 
 const SelectWrap = styled.div`
@@ -89,7 +132,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+      width: 70,
     },
   },
 };
@@ -99,9 +142,16 @@ const Croquis = () => {
   const [currentImage, setCurrentImage] = useState("");
   const [delay, setDelay] = useState(30);
   const [category, setCategory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const firstImage = getImage();
+    const firstImage = async () => {
+      setIsLoading(true);
+
+      const image = await getImage();
+      setIsLoading(false);
+      return image;
+    };
     setCurrentImage(firstImage);
   }, []);
 
@@ -131,7 +181,19 @@ const Croquis = () => {
     <CroquisWrap>
       <ImageWrap>
         <Image>
-          <img src={currentImage} alt="이미지" />
+          {isLoading ? (
+            <Box
+              sx={{
+                height: 500,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <img src={currentImage} alt="이미지" />
+          )}
         </Image>
       </ImageWrap>
       <TimerWrap>

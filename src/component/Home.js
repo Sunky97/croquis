@@ -5,7 +5,7 @@ const MainContent = styled.div`
   width: 100%;
 
   @media screen and (min-width: 1024px) {
-    height: 550px;
+    height: 650px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {

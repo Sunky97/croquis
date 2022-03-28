@@ -4,6 +4,7 @@ import Header from "./component/Header";
 import { Route, Routes } from "react-router-dom";
 import Footer from "./component/Footer";
 import Croquis from "./component/Croquis";
+import Support from "./component/Support";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/croquis" element={<Home />} />
         <Route path="/sketch" element={<Croquis />} />
-        <Route path="/bb" element={<Home />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
       <Footer />
     </div>
