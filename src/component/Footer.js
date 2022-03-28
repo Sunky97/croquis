@@ -54,6 +54,7 @@ const Footer = () => {
     <FooterWrap>
       <Logo />
       <Info>개발,기획 홍순규 | 문의 hsk1612@naver.com</Info>
+      <Info>개발자 깃허브 | https://github.com/Sunky97/croquis</Info>
       <Copyright> © 2022 Croquis</Copyright>
     </FooterWrap>
   );
