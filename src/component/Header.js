@@ -56,6 +56,9 @@ const Logo = styled.div`
   @media screen and (min-width: 1024px) {
     display: block;
   }
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    display: none;
+  }
 
   @media screen and (max-width: 767px) {
     display: none;

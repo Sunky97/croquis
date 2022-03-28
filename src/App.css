@@ -85,7 +85,8 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  font-family: "Roboto", "Noto Sans Korean", "돋움", dotum, Arial, sans-serif;
+  font-family: -apple-system, Droid Sans, "Roboto", "Noto Sans Korean", "돋움",
+    dotum, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 } /* HTML5 display-role reset for older browsers */
 article,
@@ -103,6 +104,10 @@ section {
 }
 body {
   line-height: 1;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 ol,
 ul {
