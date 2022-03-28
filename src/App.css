@@ -130,3 +130,8 @@ button {
   border: 0;
   background: none;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}

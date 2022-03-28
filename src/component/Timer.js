@@ -14,13 +14,15 @@ const TimerWrap = styled.div`
   height: 150px;
   background-color: ${(props) =>
     props.imminent ? "rgb(234 112 98)" : "rgb(16 139 245)"};
+
+  button {
+    cursor: pointer;
+  }
 `;
 
 const TimerBox = styled.div`
   position: relative;
   width: 100%;
-  background-color: ${(props) =>
-    props.imminent ? "rgb(234 112 98)" : "rgb(16 139 245)"};
   text-align: center;
   height: 100px;
   box-sizing: border-box;
@@ -34,10 +36,6 @@ const TimerBox = styled.div`
     font-size: 40px;
     color: white;
   }
-`;
-
-const Controls = styled.div`
-  height: 50px;
 `;
 
 const ControlBox = styled.ul`

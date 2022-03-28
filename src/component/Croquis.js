@@ -5,13 +5,10 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Box from "@mui/material/Box";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import ListItemText from "@mui/material/ListItemText";
-import axios from "axios";
 import getImage from "../utills/getImage";
+import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/system";
 
 const CroquisWrap = styled.div`
   width: 100%;
@@ -59,15 +56,17 @@ const Image = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   img {
     max-height: 100%;
     max-width: 100%;
-    box-shadow: 0 0 1.75rem #0000004d;
   }
 
   @media screen and (min-width: 1024px) {
     padding: 30px;
+
+    img {
+      box-shadow: 0 0 1.75rem #0000004d;
+    }
   }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -133,7 +132,7 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
+      width: 70,
     },
   },
 };
@@ -143,9 +142,16 @@ const Croquis = () => {
   const [currentImage, setCurrentImage] = useState("");
   const [delay, setDelay] = useState(30);
   const [category, setCategory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const firstImage = getImage();
+    const firstImage = async () => {
+      setIsLoading(true);
+
+      const image = await getImage();
+      setIsLoading(false);
+      return image;
+    };
     setCurrentImage(firstImage);
   }, []);
 
@@ -175,7 +181,19 @@ const Croquis = () => {
     <CroquisWrap>
       <ImageWrap>
         <Image>
-          <img src={currentImage} alt="이미지" />
+          {isLoading ? (
+            <Box
+              sx={{
+                height: 500,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <img src={currentImage} alt="이미지" />
+          )}
         </Image>
       </ImageWrap>
       <TimerWrap>
