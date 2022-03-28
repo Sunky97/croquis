@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/croquis/static/css/main.857562e1.css",
-    "main.js": "/croquis/static/js/main.70caff57.js",
+    "main.js": "/croquis/static/js/main.b58e64e4.js",
     "static/js/787.170890d0.chunk.js": "/croquis/static/js/787.170890d0.chunk.js",
     "static/media/bg.jpg": "/croquis/static/media/bg.257357b87da826299271.jpg",
     "static/media/step3.gif": "/croquis/static/media/step3.7eab8ab000469c5f67ab.gif",
@@ -13,11 +13,11 @@
     "static/media/Logo.png": "/croquis/static/media/Logo.dcd1dc65295a817e7ae7.png",
     "index.html": "/croquis/index.html",
     "main.857562e1.css.map": "/croquis/static/css/main.857562e1.css.map",
-    "main.70caff57.js.map": "/croquis/static/js/main.70caff57.js.map",
+    "main.b58e64e4.js.map": "/croquis/static/js/main.b58e64e4.js.map",
     "787.170890d0.chunk.js.map": "/croquis/static/js/787.170890d0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.857562e1.css",
-    "static/js/main.70caff57.js"
+    "static/js/main.b58e64e4.js"
   ]
 }
