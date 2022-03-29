@@ -37,15 +37,36 @@ const Manual = styled.section`
   height: 300px;
   background: #4a4a4a8c;
   font-family: "Nanum Gothic", sans-serif;
-  padding: 0 5rem 0 5rem;
   display: flex;
   align-items: center;
   color: white;
+
+  @media screen and (min-width: 1024px) {
+    padding: 0 5rem 0 5rem;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    padding: 0 5rem 0 5rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 0 2rem 0 2rem;
+    justify-content: space-between;
+  }
 `;
 
 const ImageWrap = styled.div`
-  width: 50%;
+  @media screen and (min-width: 1024px) {
+    width: 50%;
+  }
 
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 45%;
+  }
   text-align: center;
   img {
     max-width: 100%;
@@ -53,7 +74,19 @@ const ImageWrap = styled.div`
   }
 `;
 
-const ManualGroup = styled.div``;
+const ManualGroup = styled.div`
+  @media screen and (min-width: 1024px) {
+    width: 50%;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 50%;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 45%;
+  }
+`;
 
 const ManualTltle = styled.b`
   font-size: 2.5em;
