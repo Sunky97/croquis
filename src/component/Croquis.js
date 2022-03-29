@@ -217,6 +217,7 @@ const Croquis = () => {
               <MenuItem value={30}>30초</MenuItem>
               <MenuItem value={60}>1분</MenuItem>
               <MenuItem value={90}>1분 30초</MenuItem>
+              <MenuItem value={180}>3분</MenuItem>
               <MenuItem value={300}>5분</MenuItem>
               <MenuItem value={600}>10분</MenuItem>
               <MenuItem value={900}>15분</MenuItem>
