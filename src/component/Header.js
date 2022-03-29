@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -30,6 +29,7 @@ const HeaderWrap = styled.header`
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     padding: 0 55px 0 55px;
+    justify-content: space-between;
   }
 
   @media screen and (max-width: 767px) {
@@ -112,6 +112,9 @@ const SideNav = styled.div`
     display: none;
   }
 
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    display: none;
+  }
   @media screen and (max-width: 767px) {
     display: block;
     position: absolute;

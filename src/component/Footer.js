@@ -12,7 +12,8 @@ const FooterWrap = styled.footer`
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     width: 768px;
-    padding-left: 10%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @media screen and (max-width: 767px) {
